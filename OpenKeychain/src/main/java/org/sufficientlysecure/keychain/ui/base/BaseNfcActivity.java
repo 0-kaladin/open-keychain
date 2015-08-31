@@ -952,8 +952,9 @@ public abstract class BaseNfcActivity extends BaseActivity {
             name = (new String(Hex.decode(name))).replace('<', ' ');
             return name;
         } catch (IndexOutOfBoundsException e) {
-            Log.e(Constants.TAG, "couldn't get holder name", e);
             // try-catch for https://github.com/FluffyKaon/OpenPGP-Card
+
+            Log.e(Constants.TAG, "couldn't get holder name", e);
             return "";
         }
     }
@@ -967,6 +968,7 @@ public abstract class BaseNfcActivity extends BaseActivity {
     }
 
     public static String getHex(byte[] raw) {
+        // better use this method from JDK instead of Hex.toHexString()
         return new String(Hex.encode(raw));
     }
 
